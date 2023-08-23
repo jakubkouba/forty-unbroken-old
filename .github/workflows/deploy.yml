@@ -9,10 +9,10 @@ jobs:
      - name: Create private key
        uses: appleboy/ssh-action@v1.0.0
        with:
-          host: ${{ secrets.HOST}}
-          username: ${{ secrets.USER }}
+          host: 159.65.93.127
+          username: git
           key: ${{ secrets.DO_GIT_PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
+          port: 22
           script: |
             whoami
             ls -al
