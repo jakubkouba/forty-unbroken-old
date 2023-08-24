@@ -49,15 +49,12 @@ role :web, %w[fortyunbroken.com]
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server "example.com",
-  user: "user_name",
-  roles: %w{web app},
+server 'fortyunbroken.com',
+  user: 'git',
+  roles: %w[web app],
   ssh_options: {
-    user: "user_name", # overrides user setting above
-    keys: %w(/home/user_name/.ssh/id_rsa),
+    keys: '~/.ssh/do_git',
     forward_agent: false,
-    auth_methods: %w(publickey password)
-    # password: "please use keys"
   }
 
 set :deploy_to, '/home/git/apps/forty-unbroken/staging'
