@@ -49,7 +49,7 @@ role :web, %w[fortyunbroken.com]
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server 'fortyunbroken.com',
+server '159.65.93.127',
   user: 'git',
   roles: %w[web app],
   ssh_options: {
