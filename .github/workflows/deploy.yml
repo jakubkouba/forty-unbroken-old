@@ -7,11 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.DO_GIT_PRIVATE_KEY }}
-          name: do_git
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
-          if_key_exists: ignore
-      - name: SSH to DO
-        run: ssh git@159.65.93.127
+        run: |
+          mkdir -p -m 700 ~/.ssh
+          echo "${{ secrets.DO_GIT_PRIVATE_KEY }}" >> ~/.ssh/do_git
+          chmod 600 ~/.ssh/do_git
+          eval `ssh-agent -s`
+          ssh-agent -a /tmp/ssh_agent.sock > /dev/null
+          ssh-add ~/.ssh/do_git
+      - name: SSH to DO server
+        run: ssh -o "StrictHostKeyChecking no" -i ~/.ssh/do_git git@159.65.93.127
+
