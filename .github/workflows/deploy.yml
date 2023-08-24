@@ -17,6 +17,8 @@ jobs:
           mkdir -p -m 700 ~/.ssh
           echo "${{ secrets.DO_GIT_PRIVATE_KEY }}" >> ~/.ssh/do_git
           chmod 600 ~/.ssh/do_git
+          eval `ssh-agent -s`
+          ssh-add ~/.ssh/do_git
       - name: Deploy via Capistrano
         run: bundle exec cap staging deploy
 
