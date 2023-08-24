@@ -7,12 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - name: Create private key
-       uses: appleboy/ssh-action@v1.0.0
-       with:
-          host: 159.65.93.127
-          username: git
-          key: ${{ secrets.DO_GIT_PRIVATE_KEY }}
-          port: 22
-          script: |
-            whoami
-            ls -al
+       run: |
+          mkdir -p -m 700 ~/.ssh
+          echo "${{ secrets.DO_GIT_PRIVATE_KEY }}" >> ~/.ssh/do_git
+          chmod 600 ~/.ssh/do_git
+          ls -l ~/.ssh
+          ls -l ~/.ssh/do_git
+          ssh -o "StrictHostKeyChecking no" git@159.65.93.127
