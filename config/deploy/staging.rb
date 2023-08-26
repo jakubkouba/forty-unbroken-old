@@ -17,8 +17,8 @@
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w[159.65.93.127]
-role :web, %w[159.65.93.127]
+role :app, %w[fortyunbroken.com]
+role :web, %w[fortyunbroken.com]
 # role :db,  %w{deploy@example.com}
 
 
@@ -49,9 +49,13 @@ role :web, %w[159.65.93.127]
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server '159.65.93.127',
+server 'fortyunbroken.com',
   user: 'git',
   roles: %w[web app],
-  ssh_options: { keys: ENV['PRIVATE_KEY_PATH'] }
+  ssh_options: {
+    port: 22,
+    keys: ENV['PRIVATE_KEY_PATH'],
+    forward_agent: false
+  }
 
 set :deploy_to, '/home/git/apps/forty-unbroken/staging'

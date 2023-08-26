@@ -9,6 +9,8 @@ set :branch, 'main'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 set :deploy_to, '/home/git/apps/forty-unbroken'
+set :repository_cache, "git_cache"
+set :deploy_via, :remote_cache
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
