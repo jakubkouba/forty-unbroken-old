@@ -2,6 +2,9 @@ name: Deploy to Digital Ocean
 on:
   push:
     branches: main
+env:
+  PRIVATE_KEY_PATH: ~/.ssh/do_gitttttt
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,12 +16,12 @@ jobs:
         with:
           bundler-cache: true
       - name: Install SSH key
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           mkdir -p -m 700 ~/.ssh
-          echo "${{ secrets.DO_GIT_PRIVATE_KEY }}" >> ~/.ssh/do_git
-          chmod 600 ~/.ssh/do_git
+          echo "${{ secrets.DO_GIT_PRIVATE_KEY }}" > $PRIVATE_KEY_PATH
+          chmod 600 $PRIVATE_KEY_PATH
+        env:
+          PRIVATE_KEY_PATH: ~/.ssh/do_git    
       - name: Deploy via Capistrano
         run: bundle exec cap staging deploy
 
