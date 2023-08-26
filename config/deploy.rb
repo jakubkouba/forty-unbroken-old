@@ -2,13 +2,13 @@
 lock "~> 3.17.3"
 
 set :application, 'forty-unbroken'
-set :repo_url, 'git@github.com:jakubkouba/forty-unbroken.git'
+set :repo_url, 'git@github.com-fourty-unbroken:jakubkouba/forty-unbroken.git'
 set :branch, 'main'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-set :deploy_to, "/home/git/apps/forty-unbroken"
+set :deploy_to, '/home/git/apps/forty-unbroken'
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh

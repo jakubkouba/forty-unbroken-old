@@ -13,14 +13,12 @@ jobs:
         with:
           bundler-cache: true
       - name: Install SSH key
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           mkdir -p -m 700 ~/.ssh
           echo "${{ secrets.DO_GIT_PRIVATE_KEY }}" >> ~/.ssh/do_git
           chmod 600 ~/.ssh/do_git
-          eval `ssh-agent -s`
-          ssh-add ~/.ssh/do_git
-      - name: Check IP
-        run: curl https://api.ipify.org    
       - name: Deploy via Capistrano
         run: bundle exec cap staging deploy
 
