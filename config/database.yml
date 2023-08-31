@@ -84,8 +84,13 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-production:
+staging: &staging
   <<: *default
-  database: forty_unbroken_production
-  username: forty_unbroken
+  database: forty_unbroken_staging
+  port: <%= ENV['FORTY_UNBROKEN_DATABASE_PORT'] %>
+  username: <%= ENV['FORTY_UNBROKEN_DATABASE_USERNAME'] %>
   password: <%= ENV["FORTY_UNBROKEN_DATABASE_PASSWORD"] %>
+
+production:
+  <<: *staging
+  database: forty_unbroken_production
