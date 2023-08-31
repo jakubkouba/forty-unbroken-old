@@ -12,6 +12,18 @@ set :deploy_to, '/home/git/apps/forty-unbroken'
 set :repository_cache, "git_cache"
 set :deploy_via, :remote_cache
 
+# define server here as we deploy just to one machine
+# use just role app
+server 'fortyunbroken.com',
+  user: 'git',
+  roles: %w[app],
+  primary: true,
+  ssh_options: {
+    port: 22,
+    keys: ENV['PRIVATE_KEY_PATH'],
+    forward_agent: false
+  }
+
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
