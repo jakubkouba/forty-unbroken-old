@@ -54,4 +54,5 @@ group :development do
   # gem "spring"
   gem 'capistrano', '~> 3.17', require: false
   gem 'capistrano-rails', '~> 1.6', require: false
+  gem 'capistrano3-puma'
 end
