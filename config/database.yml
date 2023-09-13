@@ -87,6 +87,7 @@ test:
 staging: &staging
   <<: *default
   database: forty_unbroken_staging
+  host: <%= ENV['FORTY_UNBROKEN_DATABASE_HOST'] %>
   port: <%= ENV['FORTY_UNBROKEN_DATABASE_PORT'] %>
   username: <%= ENV['FORTY_UNBROKEN_DATABASE_USERNAME'] %>
   password: <%= ENV["FORTY_UNBROKEN_DATABASE_PASSWORD"] %>
