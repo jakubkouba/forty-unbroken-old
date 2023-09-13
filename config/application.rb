@@ -20,7 +20,6 @@ Bundler.require(*Rails.groups)
 
 if ['development', 'test'].include? ENV['RAILS_ENV']
   Dotenv::Railtie.load
-  Dotenv.load('.env.dev')
 end
 
 module FortyUnbroken
