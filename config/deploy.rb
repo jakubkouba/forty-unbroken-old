@@ -11,6 +11,7 @@ set :branch, 'main'
 set :deploy_to, '/home/git/apps/forty-unbroken'
 set :repository_cache, "git_cache"
 set :deploy_via, :remote_cache
+set :linked_dirs, %w[tmp/pids tmp/sockets log]
 
 # define server here as we deploy just to one machine
 # use just role app
