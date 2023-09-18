@@ -13,8 +13,10 @@
 #
 # Configure Using Gemfile
 # gem "pg"
-#
-default: &default
+# 
+
+development: &default
+  database: forty_unbroken_development
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
@@ -24,11 +26,6 @@ default: &default
   password: <%= ENV['DB_PASSWORD'] %>
   host: 127.0.0.1
   port: 5433
-
-
-development:
-  <<: *default
-  database: forty_unbroken_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
