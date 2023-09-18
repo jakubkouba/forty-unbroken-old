@@ -7,18 +7,18 @@ set :puma_nginx, :app
 set :puma_role, :app
 set :puma_phased_restart, true
 
-namespace :db do
-  namespace :create do
-    on roles(:app) do
-      within release_path do
-        with :rails_env, 'staging' do
-          execute 'bundle exec rails db:create'
-        end
-      end
-    end
-  end
-end
+# namespace :db do
+#   namespace :create do
+#     on roles(:app) do
+#       within release_path do
+#         with :rails_env, 'staging' do
+#           execute 'bundle exec rails db:create'
+#         end
+#       end
+#     end
+#   end
+# end
 
-namespace :deploy do
-  after :publish, 'db:create'
-end
+# namespace :deploy do
+#   after :publish, 'db:create'
+# end
