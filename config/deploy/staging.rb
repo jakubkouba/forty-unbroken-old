@@ -6,19 +6,5 @@ set :bundle_flags, '' # reset bundler flags for staging to see the progress
 set :puma_nginx, :app
 set :puma_role, :app
 set :puma_phased_restart, true
-
-# namespace :db do
-#   namespace :create do
-#     on roles(:app) do
-#       within release_path do
-#         with :rails_env, 'staging' do
-#           execute 'bundle exec rails db:create'
-#         end
-#       end
-#     end
-#   end
-# end
-
-# namespace :deploy do
-#   after :publish, 'db:create'
-# end
+set :puma_enable_socket_service, true
+set :nginx_server_name, 'staging.fortyunbroken.com'
