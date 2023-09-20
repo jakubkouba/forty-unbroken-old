@@ -38,6 +38,7 @@ install_plugin Capistrano::SCM::Git
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 
 # add support for rails aps deployment
+require 'capistrano/rvm'
 require 'capistrano/rails'
 
 require 'capistrano/puma'
