@@ -3,11 +3,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
 
+gem "rails", "~> 7.0.6"
+
 gem 'ed25519', '>= 1.2', '< 2.0'
 gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
 
+gem "camaleon_cms", '>= 2.4.3'
+gem 'draper', '~> 4.0.2'
+gem 'sass-rails', '~> 5.0'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.6"
+
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -57,3 +63,8 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano3-puma'
 end
+
+
+#################### Camaleon CMS include all gems for plugins and themes #################### 
+require_relative './lib/plugin_routes' 
+instance_eval(PluginRoutes.draw_gems)

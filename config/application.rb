@@ -27,6 +27,12 @@ module FortyUnbroken
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.active_record.belongs_to_required_by_default = false
+
+    config.session_store :cookie_store, key: 'cama_session'
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
+    
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
